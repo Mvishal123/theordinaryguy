@@ -1,5 +1,4 @@
 <script>
-	import Label from '$lib/slices/RichText/Label.svelte';
 	import { PrismicLink } from '@prismicio/svelte';
 	import WordMark from './WordMark.svelte';
 
