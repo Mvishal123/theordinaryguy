@@ -22,14 +22,14 @@
 					`glass-container row-span-3 grid grid-rows-subgrid gap-4 rounded-lg bg-gray-950/60 p-4 before:bg-gray-100/10`,
 					item.wide ? 'md:col-span-2' : 'md-col-span-1'
 				)}
-			>
+			>	
 				<h3 class="text-2xl">
 					<PrismicText field={item.title} />
 				</h3>
 				<div class="max-w-md text-balance text-gray-300">
 					<PrismicRichText field={item.body} />
 				</div>
-				<PrismicImage field={item.image} class="mx-auto max-h-36 w-auto" />
+				<PrismicImage field={item.image} class="max-h-36 w-auto" />
 			</div>
 		{/each}
 	</div>
