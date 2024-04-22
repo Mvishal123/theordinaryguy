@@ -1,10 +1,14 @@
 <script>
+	import clsx from 'clsx';
+	import gsap from 'gsap';
+	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+	import { onMount } from 'svelte';
+
 	import Bounded from '$lib/components/Bounded.svelte';
 	import ButtonLink from '$lib/components/ButtonLink.svelte';
-	import { PrismicImage, PrismicLink, PrismicRichText } from '@prismicio/svelte';
-	import clsx from 'clsx';
-	import IconGear from '~icons/ph/gear';
+	import { PrismicImage, PrismicRichText } from '@prismicio/svelte';
 	import IconCycle from '~icons/ph/arrows-clockwise';
+	import IconGear from '~icons/ph/gear';
 
 	/** @type {import("@prismicio/client").Content.ShowcaseSlice} */
 	export let slice;
@@ -13,14 +17,51 @@
 		Gear: IconGear,
 		Cycle: IconCycle
 	};
+
+	onMount(() => {
+		gsap.registerPlugin(ScrollTrigger);
+
+		gsap.fromTo(
+			'.showcase__heading',
+			{
+				y: 100
+			},
+			{
+				y: 0,
+				scrollTrigger: {
+					trigger: '.showcase__heading',
+					markers: true,
+					start: 'top bottom-=40%',
+					toggleActions: 'play pause resume reverse'
+				}
+			}
+		);
+
+		gsap.fromTo(
+			'.showcase__glow',
+			{
+				scale: 0.2,
+				opacity: 0
+			},
+			{
+				scale: 1,
+				opacity: 0.35,
+				scrollTrigger: {
+					trigger: '.showcase__heading',
+					start: 'top bottom-=40%',
+					toggleActions: 'play pause resume reverse'
+				}
+			}
+		);
+	});
 </script>
 
 <Bounded data-slice-type={slice.slice_type} data-slice-variation={slice.variation} class="relative">
 	<div
-		class="absolute -z-10 aspect-video w-full max-w-2xl rounded-full bg-violet-500/50 blur-[120px] filter"
+		class="showcase__glow absolute -z-10 aspect-video w-full max-w-2xl rounded-full bg-violet-500 blur-[120px] filter"
 	/>
 	{#if slice.primary.heading}
-		<h2 class="text-balance text-center text-5xl font-medium md:text-7xl">
+		<h2 class="showcase__heading text-balance text-center text-5xl font-medium md:text-7xl">
 			<PrismicRichText field={slice.primary.heading} />
 		</h2>
 	{/if}
