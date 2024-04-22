@@ -26,7 +26,7 @@
 	export let slice;
 </script>
 
-<Bounded data-slice-type={slice.slice_type} data-slice-variation={slice.variation} class="overflow-hidden">
+<Bounded data-slice-type={slice.slice_type} data-slice-variation={slice.variation} class="relative overflow-hidden">
 	<img src={background} alt="background" class="absolute inset-0 h-full w-full object-cover" />
 	<LogoBackground />
 	<div class="relative">
