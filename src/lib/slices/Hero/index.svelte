@@ -15,9 +15,35 @@
 
 		tl.fromTo('.hero__header', { scale: 1.25 }, { scale: 1, opacity: 1, duration: 1.8 });
 		tl.fromTo('.hero__body', { y: 100 }, { y: 0, duration: 1.4, opacity: 1 }, '-=1');
-		tl.fromTo('.hero__button', { scale: 1.5 }, { scale: 1, opacity: 1, duration: 1.2 }, '-=.8');
-		tl.fromTo('.hero__image', { y: 100 }, { y: 0, opacity: 1, duration: 1.4 }, "+=.3");
-		tl.fromTo(".hero__imageglow", {scale: .5}, {scale: 1, opacity: 1, duration: 1.4}, "-=1");
+		tl.fromTo('.hero__button', { scale: 1.5 }, { scale: 1, opacity: 1, duration: 1.2 }, '-=1');
+		tl.fromTo('.hero__image', { y: 100 }, { y: 0, opacity: 1, duration: 1.4 }, '+=.3');
+		tl.fromTo('.hero__imageglow', { scale: 0.5 }, { scale: 1, opacity: 1, duration: 1.4 }, '-=1');
+
+		gsap.to('.hero__imageglow_1', {
+			keyframes: [
+				{ top: '0%', left: '33.33%', duration: 0 },
+				{ top: '33.33%', left: '33.33%', duration: 2 },
+				{ top: '33.33%', left: '0%', duration: 3 },
+				{ top: '0%', left: '0%', duration: 2 },
+				{ top: '0%', left: '33.33%', duration: 3 }
+			],
+			repeat: -1,
+			repeatDelay: 3,
+
+			delay: 5
+		});
+		gsap.to('.hero__imageglow_2', {
+			keyframes: [
+				{ top: '33.33%', left: '0%', duration: 0 },
+				{ top: '0%', left: '0%', duration: 2 },
+				{ top: '0%', left: '33.33%', duration: 3 },
+				{ top: '33.33%', left: '33.33%', duration: 2 },
+				{ top: '33.33%', left: '0%', duration: 3 }
+			],
+			repeat: -1,
+			repeatDelay: 3,
+			delay: 5
+		});
 	});
 </script>
 
@@ -50,7 +76,7 @@
 					class="hero__imageglow hero__imageglow_1 absolute left-1/3 top-0 -z-10 h-2/3 w-2/3 bg-violet-700/50 opacity-0 mix-blend-screen blur-[120px]"
 				/>
 				<div
-					class="hero__imageglow hero__imageglow_1 absolute bottom-0 left-0 -z-10 h-2/3 w-2/3 bg-orange-600/50 opacity-0 mix-blend-screen blur-[120px]"
+					class="hero__imageglow hero__imageglow_2 absolute bottom-0 left-0 -z-10 h-2/3 w-2/3 bg-orange-600/50 opacity-0 mix-blend-screen blur-[120px]"
 				/>
 				<PrismicImage field={slice.primary.image} class="rounded-xl" />
 			</div>
