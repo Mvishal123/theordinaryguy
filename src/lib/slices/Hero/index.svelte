@@ -1,11 +1,24 @@
 <script>
+	import { onMount } from 'svelte';
+	import gsap from 'gsap';
+	import { PrismicImage, PrismicLink, PrismicText } from '@prismicio/svelte';
+
 	import Bounded from '$lib/components/Bounded.svelte';
 	import ButtonLink from '$lib/components/ButtonLink.svelte';
 	import TriangleGrid from '$lib/components/TriangleGrid.svelte';
-	import { PrismicImage, PrismicLink, PrismicText } from '@prismicio/svelte';
 
 	/** @type {import("@prismicio/client").Content.HeroSlice} */
 	export let slice;
+
+	onMount(() => {
+		const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
+
+		tl.fromTo('.hero__header', { scale: 1.25 }, { scale: 1, opacity: 1, duration: 1.8 });
+		tl.fromTo('.hero__body', { y: 100 }, { y: 0, duration: 1.4, opacity: 1 }, '-=1');
+		tl.fromTo('.hero__button', { scale: 1.5 }, { scale: 1, opacity: 1, duration: 1.2 }, '-=.8');
+		tl.fromTo('.hero__image', { y: 100 }, { y: 0, opacity: 1, duration: 1.4 }, "+=.3");
+		tl.fromTo(".hero__imageglow", {scale: .5}, {scale: 1, opacity: 1, duration: 1.4}, "-=1");
+	});
 </script>
 
 <Bounded data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
@@ -13,27 +26,31 @@
 		<TriangleGrid />
 
 		{#if slice.primary.heading}
-			<h1 class="mx-auto max-w-3xl text-balance text-5xl font-medium md:text-7xl">
+			<h1
+				class="hero__header mx-auto max-w-3xl text-balance text-5xl font-medium opacity-0 md:text-7xl"
+			>
 				<PrismicText field={slice.primary.heading} />
 			</h1>
 		{/if}
 		{#if slice.primary.body}
-			<p class="mx-auto mt-6 max-w-md text-balance text-gray-300">
+			<p class="hero__body mx-auto mt-6 max-w-md text-balance text-gray-300 opacity-0">
 				<PrismicText field={slice.primary.body} />
 			</p>
 		{/if}
 		{#if slice.primary.button_link}
-			<ButtonLink class="mt-8">
-				<PrismicLink field={slice.primary.button_link}>{slice.primary.button_label}</PrismicLink>
+			<ButtonLink class="hero__button mt-8 opacity-0">
+				<PrismicLink field={slice.primary.button_link} class="hero__button opacity-0"
+					>{slice.primary.button_label}</PrismicLink
+				>
 			</ButtonLink>
 		{/if}
 		{#if slice.primary.image}
-			<div class="glass-container mt-16 w-fit">
+			<div class="glass-container hero__image mt-16 w-fit opacity-0">
 				<div
-					class="absolute left-1/3 top-0 -z-10 h-2/3 w-2/3 bg-violet-700/50 mix-blend-screen blur-[120px]"
+					class="hero__imageglow hero__imageglow_1 absolute left-1/3 top-0 -z-10 h-2/3 w-2/3 bg-violet-700/50 opacity-0 mix-blend-screen blur-[120px]"
 				/>
 				<div
-					class="absolute bottom-0 left-0 -z-10 h-2/3 w-2/3 bg-orange-600/50 mix-blend-screen blur-[120px]"
+					class="hero__imageglow hero__imageglow_1 absolute bottom-0 left-0 -z-10 h-2/3 w-2/3 bg-orange-600/50 opacity-0 mix-blend-screen blur-[120px]"
 				/>
 				<PrismicImage field={slice.primary.image} class="rounded-xl" />
 			</div>
