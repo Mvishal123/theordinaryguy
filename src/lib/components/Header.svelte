@@ -28,7 +28,7 @@
 </script>
 
 <header>
-	<nav class="item-center flex w-full justify-between px-6 py-6 md:px-44" aria-label="Main">
+	<nav class="item-center flex w-full justify-between p-4 md:p-6" aria-label="Main">
 		<div class="flex items-center justify-between max-md:w-full">
 			<a href="/" on:click={close} class="z-50">
 				<WordMark />

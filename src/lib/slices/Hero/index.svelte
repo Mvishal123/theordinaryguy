@@ -73,10 +73,10 @@
 		{#if slice.primary.image}
 			<div class="glass-container hero__image mt-16 w-fit opacity-0">
 				<div
-					class="hero__imageglow hero__imageglow_1 absolute left-1/3 top-0 -z-10 h-2/3 w-2/3 bg-violet-700/50 opacity-0 mix-blend-screen blur-[120px]"
+					class="hero__imageglow hero__imageglow_1 absolute left-1/3 top-0 -z-10 h-2/3 w-2/3 bg-violet-700/50 opacity-0 mix-blend-screen blur-3xl md:blur-[120px]"
 				/>
 				<div
-					class="hero__imageglow hero__imageglow_2 absolute bottom-0 left-0 -z-10 h-2/3 w-2/3 bg-orange-600/50 opacity-0 mix-blend-screen blur-[120px]"
+					class="hero__imageglow hero__imageglow_2 absolute bottom-0 left-0 -z-10 h-2/3 w-2/3 bg-orange-600/50 opacity-0 mix-blend-screen blur-3xl md:blur-[120px]"
 				/>
 				<PrismicImage field={slice.primary.image} class="rounded-xl" />
 			</div>
