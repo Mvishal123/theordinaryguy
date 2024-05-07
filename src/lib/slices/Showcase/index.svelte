@@ -30,7 +30,6 @@
 				y: 0,
 				scrollTrigger: {
 					trigger: '.showcase__heading',
-					markers: true,
 					start: 'top bottom-=40%',
 					toggleActions: 'play pause resume reverse'
 				}
